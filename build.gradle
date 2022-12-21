@@ -1,0 +1,66 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.6.8'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.secu'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+	maven {
+        url "http://nexus.sys.wemakeprice.com/content/repositories/central"
+        credentials {
+            username "development"
+            password "development"
+        }
+        allowInsecureProtocol = true
+    }
+    maven {
+        url "http://nexus.sys.wemakeprice.com/content/repositories/thirdparty"
+        credentials {
+            username "development"
+            password "development"
+        }
+        allowInsecureProtocol = true
+    }
+    maven {
+        url "http://nexus.sys.wemakeprice.com/content/repositories/releases"
+        credentials {
+            username "development"
+            password "development"
+        }
+        allowInsecureProtocol = true
+    }
+    maven {
+        url "http://nexus.sys.wemakeprice.com/content/repositories/snapshots"
+        credentials {
+            username "development"
+            password "development"
+        }
+        allowInsecureProtocol = true
+    }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'com.wemakeprice.payment:wkms:1.0.1'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
