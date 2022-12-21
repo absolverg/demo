@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.6.5'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'war'
 }
 
 group = 'com.secu'
@@ -12,10 +13,6 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
-}
-
-bootJar{
-    mainClass = 'com.secu.demo.DemoApplication'
 }
 
 repositories {
